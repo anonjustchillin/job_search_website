@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'users',
     'dashboard',
 ]
 
@@ -124,5 +125,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'website.User'
-AUTHENTICATION_BACKEND = ['website.backends.EmailBackend']
+AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKEND = ['users.backends.EmailBackend']
