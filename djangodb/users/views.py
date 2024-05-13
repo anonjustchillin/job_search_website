@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from users.models import User
+from .models import User
 from .forms import RegisterUserForm
+from resume.models import Resume
+from company.models import Company
 
 
 # register applicant only
@@ -14,6 +16,9 @@ def register_applicant(request):
             var.is_applicant = True
             var.username = var.email
             var.save()
+
+            Resume.objects.create(user=var)
+
             messages.info(request, 'Акаунт створений')
             return redirect('login')
         else:
@@ -33,6 +38,9 @@ def register_recruiter(request):
             var = form.save(commit=False)
             var.is_recruiter = True
             var.username = var.email
+
+            Company.objects.create(user=var)
+
             var.save()
             messages.info(request, 'Акаунт створений')
             return redirect('login')
