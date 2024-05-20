@@ -1,58 +1,64 @@
-<!DOCTYPE html>
+{% load static %}
+
 <html>
 
 <head>
-    <title>HTML Login Form</title>
-    <link rel="stylesheet"
-          href="style.css">
+    <meta charset="utf-8" />
+    <title>Вхід</title>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <style>
+        .bg
+        {
+            background-image:url({% static 'sky.jpg' %});
+            background-repeat:no-repeat;
+            background-size:100%;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="main">
-        <h1>Login</h1>
-        <h3>Enter your інфо</h3>
-        <form action="">
-            <label for="first">
-                  Username:
-              </label>
-            <input type="text"
-                   id="first"
-                   name="first"
-                   placeholder="Enter your Username" required>
 
-            <label>
-                  шось:
-              </label>
-            <input >
+<body class="bg">
 
-            <label>
-                  шось:
-              </label>
-            <input >
+  <div class="split left">
+      <form class="container">
+        <h3 class="h3 bold" style="margin-bottom: 12px;">Реєстрація для роботодавців</h3>
 
-            <label for="password">
-                  Password:
-              </label>
-            <input type="password"
-                   id="password"
-                   name="password"
-                   placeholder="Enter your Password" required>
+        <hr class="line">
+          <div>
+              <label for="fname" class="p1 bold">Ім'я</label>
+          <input type="text" id="fname" name="fname" placeholder="Введіть ім'я" required>
+          </div>
+
+          <div>
+              <label for="lname" class="p1 bold">Прізвище</label>
+          <input type="text" id="lname" name="lname" placeholder="Введіть прізвище" required>
+          </div>
+
+          <div>
+              <label for="email" class="p1 bold">Email</label>
+          <input type="text" id="email" name="email" placeholder="Введіть email" required>
+          </div>
+
+          <div>
+              <label for="psw" class="p1 bold">Пароль</label>
+          <input type="password" id="psw" name="password" placeholder="Введіть пароль" required>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+              <label for="psw2" class="p1 bold">Введіть пароль ще раз</label>
+          <input type="password" id="psw2" name="password" placeholder="Введіть пароль ще раз" required>
+          </div>
 
 
-            <div class="wrap">
-                <button type="submit"
-                        onclick="solve()">
-                    Submit
-                </button>
-            </div>
-        </form>
-        <p>логін?
-              <a href="#"
-               style="text-decoration: none;">
-                Create an account
-            </a>
-        </p>
-    </div>
+          <button type="submit" class="button">Зареєструватися</button>
+
+          <p class="p1 medium"><a href="{% url 'register-applicant' %}">Реєстрація для шукачів.</a></p>
+          <p class="p1 medium"><a href="{% url 'login' %}">Вже є акаунт? Увійти.</a></p>
+
+      </form>
+  </div>
+
+
 </body>
 
 </html>

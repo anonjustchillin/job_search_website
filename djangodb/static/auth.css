@@ -1,0 +1,216 @@
+body{
+    background-color: #EEEEEE;
+}
+
+/* typography */
+
+h1{
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.h2{
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    line-height: normal;
+}
+
+
+.h3 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.h4 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.h5 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.h6 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.p1 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+    font-size: 18px;
+}
+
+.p2 {
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.regular {
+    font-weight: 400;
+}
+
+/* line */
+
+.line {
+    border-width: 2px;
+    color: #919191;
+}
+
+/* buttons */
+
+.button {
+    display: inline-flex;
+    height: 64px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: #10529A;
+    color: #EEEEEE;
+    align-self: stretch;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.button:hover {
+    background-color: #276FBF;
+}
+
+.button:active {
+    background-color: #073466;
+}
+
+.button:disabled {
+    background-color: #B8B8B7;
+}
+
+/* form elements */
+
+input, textarea, select{
+    display: flex;
+    width: 300px;
+    height: 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 8px;
+    border: 3px solid #071013;
+    background-color: #EEEEEE;
+
+    margin-top: 4px;
+    padding: 8px 12px;
+    align-self: stretch;
+
+    color: #071013;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+input:focus{
+    border: 2px solid #276FBF;
+}
+
+input:disabled{
+    border: 2px solid #B8B8B7;
+}
+
+input:error{
+    border: 2px solid #DB4C40;
+}
+
+textarea:focus{
+    border: 3px solid #276FBF;
+}
+
+textarea:disabled{
+    border: 3px solid #B8B8B7;
+}
+
+textarea:error{
+    border: 3px solid #DB4C40;
+}
+
+select:focus{
+    border: 3px solid #276FBF;
+}
+
+select:disabled{
+    border: 3px solid #B8B8B7;
+}
+
+select:error{
+    border: 3px solid #DB4C40;
+}
+
+
+/* Page split */
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: #111;
+}
+
+.right {
+    right: 0;
+    /*background-image: url("{% static "sky.jpg" %}");*/
+}
+
+/* Form */
+
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

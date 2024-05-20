@@ -1,0 +1,97 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>JobFinder</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
+            <h3 class="h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
+            <a class="h6 medium" href="#" style="float:right">Увійти в акаунт</a>
+        </div>
+    </div>
+
+    <section id="searchSection">
+        <div id="searchInputs">
+            <div>
+                <label for="title" class="p1 bold">Посада</label>
+                <input type="text" id="title" name="title" value="">
+            </div>
+            <div>
+                <label for="category" class="p1 bold">Індустрія</label>
+                <select name="location" id="category">
+                    <option value="none">-</option>
+                    <option value="kyiv">Київ</option>
+                </select>
+            </div>
+            <div>
+                <label for="loc" class="p1 bold">Населений пункт</label>
+                <select name="location" id="loc">
+                    <option value="none">-</option>
+                    <option value="kyiv">Київ</option>
+                </select>
+            </div>
+            <div>
+                <label for="type" class="p1 bold">Тип роботи</label>
+                <select name="type" id="type">
+                    <option value="none">-</option>
+                    <option value="dist">Дистанційно</option>
+                </select>
+            </div>
+            <button class="button" style="margin-top: 23px;">Знайти вакансії</button>
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <h4 class="h4 bold" style="margin-top: 0px; margin-bottom: 8px;">Назва вакансії</h4>
+                <hr class="line" style="margin-bottom: 12px;">
+                <p class="pIcon">Місцезнаходження</p>
+                <p class="pIcon">Тип роботи</p>
+                <p class="p1 regular" style="text-overflow: hidden; margin: 24px 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et...</p>
+                <button class="button-outline" style="display:flex;">Знайти вакансії</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <div class="footer">
+        <div class="footerRow">
+        <div class="linkRow">
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="#">Головна</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="#">Вхід в акаунт</a></li>
+                    <li class="p1 regular"><a href="#">Реєстрація для шукачів</a></li>
+                    <li class="p1 regular"><a href="#">Реєстрація для роботодавців</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerCol">
+                <ul class="items" style="text-align: right;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+        </div>
+        <hr class="line" style="color: #C4C5E0; width: 1420px; margin-top: 72px">
+        <p class="p1 regular" style="color: #C4C5E0; margin-top: 24px">Курсова робота з програмування студентки групи ІС-32 Топки Тіни</p>
+    </div>
+
+</body>
+
+</html>
