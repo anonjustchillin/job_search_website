@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Вхід</title>
+    <title>Реєстрація роботодавця</title>
     <link rel="stylesheet" href="{% static 'auth.css' %}">
     <style>
         .bg
@@ -32,6 +32,16 @@
           <div>
               <label for="lname" class="p1 bold">Прізвище</label>
           <input type="text" id="lname" name="lname" placeholder="Введіть прізвище" required>
+          </div>
+
+          <div>
+              <label for="company" class="p1 bold">Компанія</label>
+          <input type="text" id="company" name="company" placeholder="Введіть компанію" required>
+          </div>
+
+          <div>
+              <label for="location" class="p1 bold">Місцезнаходження компанії</label>
+          <input type="text" id="location" name="location" placeholder="Введіть місцезнаходження компанії" required>
           </div>
 
           <div>
