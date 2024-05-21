@@ -38,10 +38,9 @@ def register_recruiter(request):
             var = form.save(commit=False)
             var.is_recruiter = True
             var.username = var.email
-
+            var.save()
             Company.objects.create(user=var)
 
-            var.save()
             messages.info(request, 'Акаунт створений')
             return redirect('login')
         else:
@@ -74,4 +73,4 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.info(request, 'Ви вийшли з акаунта')
-    return redirect('login')
+    return redirect('home')

@@ -1,0 +1,41 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <style>
+        .bg
+        {
+            background-image:url({% static 'sky.jpg' %});
+            background-repeat:no-repeat;
+            background-size:100%;
+        }
+    </style>
+
+</head>
+
+
+<body class="bg">
+
+  <div class="split left">
+
+      {% block content %}
+      {% endblock %}
+      {% if messages %}
+      {% for messages in messages %}
+        <div>
+            <h6 class="h6 medium"> {{ messages }} </h6>
+        </div>
+      {% endfor %}
+      {% endif %}
+
+
+  </div>
+
+
+</body>
+
+</html>

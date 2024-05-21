@@ -8,15 +8,37 @@ body{
     background-color: #073466;
     padding-left: 40px;
     padding-right: 40px;
+    margin-bottom: 44px;
 }
 
 .nav{
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     /*margin-left: 40px;
     margin-right: 40px;*/
+}
+
+.nav .linksL {
+  flex: 1;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav .header-title {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav .linksR {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
 }
 
 .nav a{
@@ -27,6 +49,7 @@ body{
     justify-content: start;
     /*padding: 14px 16px;*/
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 /*.nav a:visited {
@@ -55,18 +78,26 @@ body{
     padding-left: 40px;
     padding-right: 40px;
     overflow: hidden;
+    margin-top: 160px;
 }
 
 .footer .footerRow{
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    flex-wrap: wrap;
+    gap: 160px;
 }
 
-.footer .linkRow{
+/*.footer .linkRow{
     display: flex;
     flex-wrap: wrap;
     gap: 160px;
+}*/
+
+.footerCol ul, li{
+    margin: 0;
+    padding: 0;
 }
 
 .footerCol .items li{
@@ -96,69 +127,51 @@ body{
 
 /* typography */
 
+:root{
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    line-height: normal;
+}
+
 h1{
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 96px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
 .h2{
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 60px;
-    font-style: normal;
-    line-height: normal;
 }
 
 
 .h3 {
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 36px;
-    font-style: normal;
-    line-height: normal;
 }
 
 .h4 {
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 28px;
-    font-style: normal;
-    line-height: normal;
 }
 
 .h5 {
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 24px;
-    font-style: normal;
-    line-height: normal;
 }
 
 .h6 {
     color: #071013;
-    font-family: Roboto, sans-serif;
     font-size: 20px;
-    font-style: normal;
-    line-height: normal;
 }
 
 .p1 {
     color: #071013;
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    line-height: normal;
     font-size: 18px;
 }
 
 .p2 {
     color: #071013;
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    line-height: normal;
     font-size: 12px;
 }
 
@@ -207,9 +220,14 @@ a:active {
 
 /* buttons */
 
+button{
+    text-decoration: none;
+
+}
+
 .button {
     display: inline-flex;
-    height: 64px;
+    height: 44px;
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
@@ -241,7 +259,7 @@ a:active {
 
 .button-outline {
     display: inline-flex;
-    height: 64px;
+    height: 40px;
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
@@ -273,11 +291,10 @@ a:active {
 }
 
 /* form elements */
-
 input, textarea, select{
     display: flex;
     width: 300px;
-    height: 64px;
+    height: 40px;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
@@ -286,7 +303,7 @@ input, textarea, select{
     background-color: #EEEEEE;
 
     margin-top: 4px;
-    padding: 8px 12px;
+    padding: 8px 8px;
     align-self: stretch;
 
     color: #071013;
@@ -363,7 +380,7 @@ select:error{
     padding-right: 40px;
     padding-left: 40px;
     padding-top: 44px;
-    padding-bottom: 160px;
+    /*padding-bottom: 160px;*/
 }
 
 #searchInputs{
@@ -386,6 +403,9 @@ select:error{
 /* vacancy card */
 
 .card {
+    display: flex;
+    flex-direction: column;
+
     overflow: hidden;
     border-radius: 8px;
     background-color: #D8D8D8;
@@ -394,38 +414,127 @@ select:error{
     width: 400px;
 }
 
+.card p{
+    width: 330px;
+    overflow: hidden;
+    text-justify: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+}
+
+.card div: last-of-type{
+    margin-top: auto;
+}
+
 .pIcon{
-    text-overflow: hidden;
     color: #919191;
     font-family: Roboto, sans-serif;
     font-style: normal;
     line-height: normal;
     font-size: 18px;
+}
 
+.icon {
+      width: 1.125em;
+      height: 1.125em;
+      vertical-align: -0.125em;
+    }
+
+.icon, .text {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.align-content{
+    display: flex;
+    flex-direction: row;
+    position:relative;
+    gap: 4px;
     margin: 6px 0px;
 }
 
-.mapIcon::before {
-  content: url("{% static 'map-marker-svgrepo-com.svg' %}");
-  display: inline-block;
-  color: #919191;
-  width: 18px;
-  height: 18px;
-  margin-right: 4px;
+/* Job layout */
+#details{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    position:relative;
+    overflow-x:hidden;
+    padding-left: 40px;
+    padding-right: 40px;
+    /*padding-bottom: 160px;*/
 }
 
-.houseIcon::before {
-  content: url("{% static 'home-10-svgrepo-com.svg' %}");
-  display: inline-block;
-  color: #919191;
-  width: 18px;
-  height: 18px;
-  margin-right: 4px;
+#spanRow{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
+.mini-table{
+    width: 444px;
+    display: flex;
+    justify-content: space-between;
+}
 
-/*.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}*/
+.mini-table p{
+    margin: 0;
+    padding:0;
+}
+
+#details .container{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.right-content h5{
+    margin-top: 18px;
+    margin-bottom: 24px;
+}
+
+.right-content p{
+    overflow: hidden;
+    text-justify: auto;
+}
+
+/* page title */
+.page-title{
+    position: relative;
+    width: 620px;
+    gap: 18px;
+    text-align: center;
+    margin: 0 auto;
+
+ }
+
+ /* for forms */
+
+ .form-section{
+    display: flex;
+    justify-content: center;
+
+ }
+
+.containerF{
+    display:flex;
+    flex-direction: column;
+    gap: 18px;
+ }
+
+ .form-item{
+    width: 434px;
+ }
+
+.upload{
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-radius: 0;
+}

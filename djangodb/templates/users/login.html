@@ -1,39 +1,28 @@
+{% extends 'base_auth.html' %}
 {% load static %}
 
-<html>
+{% block title %}Вхід{% endblock %}
 
-<head>
-    <meta charset="utf-8" />
-    <title>Вхід</title>
-    <link rel="stylesheet" href="{% static 'auth.css' %}">
-    <style>
-        .bg
-        {
-            background-image:url({% static 'sky.jpg' %});
-            background-repeat:no-repeat;
-            background-size:100%;
-        }
-    </style>
-
-</head>
-
-
-<body class="bg">
-
-  <div class="split left">
-      <form class="container">
+{% block content %}
+    <!--{% if messages %}
+      {% for messages in messages %}
+        <div>
+            <h6 class="h6 medium"> {{ messages }} </h6>
+        </div>
+      {% endfor %}
+      {% endif %}-->
+    <form class="container" method="POST">
+        {% csrf_token %}
         <h3 class="h3 bold" style="margin-bottom: 12px;">Вхід</h3>
-
         <hr class="line">
-
           <div>
-              <label for="email" class="p1 bold">Email</label>
-          <input type="text" id="email" name="email" placeholder="Введіть email" required>
+                <label for="email" class="p1 bold">Email</label>
+                <input type="text" id="email" name="email" placeholder="Введіть email" required>
           </div>
 
           <div style="margin-bottom: 24px;">
-              <label for="psw" class="p1 bold">Пароль</label>
-          <input type="password" id="psw" name="password" placeholder="Введіть пароль" required>
+                <label for="password" class="p1 bold">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
           </div>
 
 
@@ -42,9 +31,4 @@
           <p class="p1 medium"><a href="{% url 'register-applicant' %}">Створити акаунт.</a></p>
           <p class="p1 medium"><a href="{% url 'register-recruiter' %}">Реєстрація для роботодавців.</a></p>
       </form>
-  </div>
-
-
-</body>
-
-</html>
+{% endblock content %}

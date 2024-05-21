@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Компанія{% endblock %}
+{% block head_nav %}
+        <div class="nav">
+            <div class="linksL">
+                <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
+                <a class="h6 medium" href="{% url 'job-listing' %}">Керування вакансіями</a>
+            </div>
+
+            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
+            <div class="linksR">
+               <a class="h6 medium" href="{% url 'job-listing' %}" style="float:right;">Огляд кандидатів</a>
+                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
+            </div>
+
+        </div>
+{% endblock head_nav %}
+
+{% block content %}
+<div class="page-title">
+    <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Компанія</h3>
+    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+</div>
+
+<section class="form-section">
+<form class="containerF" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="name" class="p1 bold">Назва компанії</label>
+        <input type="text" id="name" name="name" placeholder="Введіть назву компанії" class="form-item" required>
+    </div>
+    <div>
+        <label for="country" class="p1 bold">Країна</label>
+        <input type="text" id="country" name="country" placeholder="Введіть країну" class="form-item" required>
+    </div>
+    <div>
+        <label for="city" class="p1 bold">Населений пункт</label>
+        <input type="text" id="city" name="city" placeholder="Введіть населений пункт" class="form-item" required>
+    </div>
+    <div>
+        <button type="submit" class="button" style="width: 217px; margin-top: 14px">Зберегти</button>
+    </div>
+</form>
+</section>
+
+{% endblock content %}
+
+{% block foot_nav %}
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                </ul>
+            </div>
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'login' %}">Керування вакансіями</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Додати вакансію</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-recruiter' %}">Огляд кандидатів</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'update-company' %}">Компанія</a></li>
+                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+{% endblock foot_nav %}

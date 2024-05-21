@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{job.title}}{% endblock %}
+{% block head_nav %}
+{% if request.user.is_applicant %}
+        <div class="nav">
+            <div class="linksL">
+               <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
+                <a class="h6 medium" href="{% url 'job-listing' %}">Збережені вакансії</a>
+            </div>
+            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
+            <div class="linksR">
+                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
+            </div>
+
+        </div>
+
+{% elif request.user.is_recruiter %}
+        <div class="nav">
+            <div class="linksL">
+                <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
+                <a class="h6 medium" href="{% url 'job-listing' %}">Керування вакансіями</a>
+            </div>
+
+            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
+            <div class="linksR">
+               <a class="h6 medium" href="{% url 'job-listing' %}" style="float:right;">Огляд кандидатів</a>
+                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
+            </div>
+
+        </div>
+{% endif %}
+{% endblock head_nav %}
+
+{% block content %}
+        <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px;">{{job.title}}</h3>
+
+    <section id="details">
+        <div>
+            <hr class="line" style="margin: 0; margin-bottom: 12px;">
+                <div id="spanRow">
+                    <span class="align-content">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
+                            <path fill="#919191" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                    </span>
+                    <span class="pIcon text">
+                        {{job.location}}
+                    </span>
+                </span>
+                    <span class="align-content">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 576 512">
+                    <path fill="#919191" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+                    </span>
+                    <span class="pIcon text">
+                        {{job.type}}
+                    </span>
+                </span>
+                </div>
+
+                <div class="container">
+                    <div class="mini-table">
+                        <p class="p1 bold">Заробітня плата</p>
+                        <p class="p1 medium">{{job.salary}} UAH</p>
+                    </div>
+                    <div class="mini-table">
+                        <p class="p1 bold">Компанія</p>
+                        <p class="p1 medium">{{job.company}}</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <a href="#"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                </div>
+
+        </div>
+        <div class="right-content">
+            <div>
+                <h5 class="h5 bold">Вимоги</h5>
+            </div>
+            <div>
+                <p class="p1 regular">{{job.reqs}}</p>
+            </div>
+
+        </div>
+    </section>
+    {% endblock content %}
+
+{% block foot_nav %}
+{% if request.user.is_applicant %}
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'job-listing' %}">Збережені вакансії</a></li>
+                    <li class="p1 regular"><a href="{% url 'job-listing' %}">Резюме</a></li>
+                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+
+{% elif request.user.is_recruiter %}
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                </ul>
+            </div>
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'login' %}">Керування вакансіями</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Додати вакансію</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-recruiter' %}">Огляд кандидатів</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Компанія</a></li>
+                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+{% endif %}
+{% endblock foot_nav %}
