@@ -252,24 +252,20 @@ h1{
 }
 
 a {
-    color: #EEEEEE;
     text-decoration: none;
 }
 
 a:visited {
-    color: #EEEEEE;
     text-decoration: none;
 }
 
 a:hover {
-    color: #EEEEEE;
     text-decoration: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 2px;
 }
 
 a:active {
-    color: #EEEEEE;
     text-decoration: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 2px;
@@ -289,6 +285,28 @@ a bnt-a:hover {
 
 a bnt-a:active {
     text-decoration: none;
+}
+
+a download-link{
+    color: #071013;
+}
+a download-link:visited {
+    color: #071013;
+    text-decoration: none;
+}
+
+a download-link:hover {
+    color: #071013;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 2px;
+}
+
+a download-link:active {
+    color: #071013;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 2px;
 }
 
 /* line */
@@ -451,9 +469,10 @@ select:error{
 #introText{
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: 32px;
+    padding-top: 32px;
+    padding-left: 40px;
     width: 460px;
-    margin-left: 40px;
 }
 
 #introImg{
@@ -489,37 +508,27 @@ select:error{
 
 /* vacancy card */
 
-.card {
+.my-card {
+    overflow: hidden;
     display: flex;
-    width: 388px;
+    flex-direction: column;
+    width: 640px;
     height: 273px;
     border-radius: 8px;
     background-color: #C4C5E0;
     padding: 20px;
 }
 
-.card div: last-of-type{
-    margin-top: auto;
-}
-
-.card-title-line{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-}
-
 .card-title{
     display: flex;
-    align-items: center;
-    gap: 44px;
+    justify-content: space-between;
 }
 
 .card-info{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
     align-self: stretch;
 }
 
@@ -527,7 +536,7 @@ select:error{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 4px;
     align-self: stretch;
 }
 
@@ -537,6 +546,19 @@ select:error{
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+
+}
+
+/* when no results */
+
+.no-results{
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
 
 }
 
@@ -657,26 +679,22 @@ select:error{
 
 .table-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
+
 }
 
 .table-row{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.table-item{
     height: 56px;
-    width: 800px;
+    width: 720px;
     overflow: hidden;
-    display: flex;
-    padding: 12px 18px;
+    padding: 12px 20px;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    background: #C4C5E0;
+    background: #D9D9D9;
 }
 
 .pseudo-line{
@@ -693,6 +711,7 @@ select:error{
 
 .table-icon{
     display: flex;
+    width: 160px;
     flex-direction: row;
     justify-content: space-between;
     /*gap: 16px;*/
@@ -701,7 +720,6 @@ select:error{
 .btn-icon{
     height: 32px;
     width: 32px;
-    background: #276FBF;
     border-radius: 50%;
     border: 0;
 }

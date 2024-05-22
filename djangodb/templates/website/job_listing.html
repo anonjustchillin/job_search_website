@@ -1,3 +1,5 @@
+{% load static %}
+
 <section id="searchSection">
         <form id="searchInputs" method="GET">
             <div>
@@ -30,89 +32,55 @@
             </div>
             <button type="submit" class="button" style="margin-top: 23px;">Знайти вакансії</button>
         </form>
+            {% if jobs %}
+            {% for job in jobs %}
+        <div class="container" style="gap: 24px;">
 
-        <div class="container">
-
-            <div class="card">
-
-                <div class="card-title-line">
+            <div class="my-card">
                     <div class="card-title">
-                        <h4 class="h4 bold">Назва вакансії</h4>
-                        <h4 class="h4 regular">20 000 UAH</h4>
+                        <h4 class="h4 bold" style="margin: 0;">{{job.title}}</h4>
+                        <h4 class="h4 regular" style="margin: 0;">{{job.salary}} UAH</h4>
                     </div>
-                    <hr class="line">
-                </div>
+                        <hr class="line" style="margin: 20px 0px 12px; color: #37597F">
 
                 <div class="card-info">
                     <div class="card-icons">
                         <span class="align-content">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
-                                <path fill="#919191" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                                <path fill="#37597F" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                             </span>
-                            <span class="pIcon text">Vscwt</span>
+                            <span class="pIcon text" style="color: #37597F">{{job.location}}</span>
                         </span>
 
                         <span class="align-content">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 576 512">
-                                <path fill="#919191" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+                                <path fill="#37597F" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
                             </span>
-                            <span class="pIcon text">тип</span>
+                            <span class="pIcon text" style="color: #37597F">{{job.type}}</span>
                         </span>
                     </div>
 
                 <div>
-                    <p class="p1 regular">текст текст текст</p>
+                    <p class="p1 regular" style="color: #37597F">{{job.reqs}}</p>
                 </div>
                 </div>
 
-                <div>
-                    <a href="#" style="bnt-a"><button role="link" class="button-outline">Переглянути</button></a>
-                </div>
-
-            </div>
-            <!--
-            {% if jobs %}
-            {% for job in jobs %}
-            <div class="card">
-                <div>
-                    <h4 class="h4 bold" style="margin-top: 0px; margin-bottom: 8px;">{{job.title}}</h4>
-                    <hr class="line" style="margin-bottom: 12px;">
-                </div>
-                <div>
-                    <span class="align-content">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
-                            <path fill="#919191" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                    </span>
-                    <span class="pIcon text">
-                        {{job.location}}
-                    </span>
-                </span>
-
-                <span class="align-content">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 576 512">
-                    <path fill="#919191" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
-                    </span>
-                    <span class="pIcon text">
-                        {{job.type}}
-                    </span>
-                </span>
-                </div>
-                <div>
-                    <p class="p1 regular" style="margin-top: 8px; margin-bottom: 28px;">{{job.reqs}}</p>
-                </div>
-
-                <div>
-                    <a href="{% url 'job-details' job.pk %}" style="bnt-a"><button role="link" class="button-outline" style="display:flex;">Переглянути</button></a>
+                <div style="margin-top: auto;">
+                    <a href="{% url 'job-details' job.pk %}" class="bnt-a"><button role="link" class="button-outline">Переглянути</button></a>
                 </div>
 
             </div>
-            {% endfor %}
-            {% endif %}-->
 
         </div>
+        {% endfor %}
+        {% else %}
+    <div class="no-results">
+        <h4 class="h4 bold" style="color: #767676; margin: 0;">Тут нічого :(</h4>
+        <p class="p1 regular" style="color: #767676; margin: 0;">Введіть інший запит</p>
+    </div>
+
+        {% endif %}
 
     </section>

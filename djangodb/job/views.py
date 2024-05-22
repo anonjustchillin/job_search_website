@@ -83,9 +83,9 @@ def apply_to_job(request, pk):
 
 
 def all_applicants(request, pk):
-    jobs = Job.objects.get(pk=pk)
-    applicants = jobs.applyjob_set.all()
-    context = {'jobs': jobs, 'applicants': applicants}
+    job = Job.objects.get(pk=pk)
+    applicants = job.applyjob_set.all()
+    context = {'job': job, 'applicants': applicants}
     return render(request, 'all_applicants.html', context)
 
 

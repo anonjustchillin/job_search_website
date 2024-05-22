@@ -3,13 +3,13 @@
 {% if request.user.is_applicant %}
         <div class="footerCol">
                 <ul class="items">
-                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                    <li class="p1 bold"><a href="{% url 'dashboard' %}">Головна</a></li>
                 </ul>
             </div>
             <div class="footerCol">
                 <ul class="items">
                     {% if request.user.has_resume %}
-                    <li class="p1 regular"><a href="{% url 'update-resume' %}">Резюме</a></li>
+                    <li class="p1 regular"><a href="{% url 'resume-details' %}">Резюме</a></li>
                     {% else %}
                     <li class="p1 regular"><a href="{% url 'update-resume' %}">Резюме</a></li>
                     {% endif %}
@@ -34,13 +34,12 @@
                 <ul class="items">
                     <li class="p1 regular"><a href="{% url 'manage-jobs' %}">Керування вакансіями</a></li>
                     <li class="p1 regular"><a href="{% url 'create-job' %}">Додати вакансію</a></li>
-                    <li class="p1 regular"><a href="{% url 'all-applicants' %}">Огляд кандидатів</a></li>
                 </ul>
             </div>
             <div class="footerCol">
                 <ul class="items">
                     {% if request.user.has_company %}
-                    <li class="p1 regular"><a href="{% url 'company-details' company.pk %}">Компанія</a></li>
+                    <li class="p1 regular"><a href="{% url 'company-details' user.pk %}">Компанія</a></li>
                     {% else %}
                     <li class="p1 regular"><a href="{% url 'update-company' %}">Компанія</a></li>
                     {% endif %}

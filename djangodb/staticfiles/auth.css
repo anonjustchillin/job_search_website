@@ -98,8 +98,7 @@ h1{
 .line {
     border-width: 2px;
     color: #D8D8D8;
-    margin-left: 0px;
-    margin-bottom: 24px;
+    margin: 0px;
     width: 400px;
 }
 

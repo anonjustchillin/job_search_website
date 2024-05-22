@@ -12,27 +12,32 @@
 </div>
 
 <section class="table-container">
+    {% if applicants %}
+    {{% for app in applicants %}}
     <div class="table-row">
-        <div class="table-item">
-            <div class="table-text">
-            <div><p class="p1 bold">Назва</p></div>
+            <div><p class="p1 bold">{{job.title}}</p></div>
             <div class="pseudo-line"></div>
-            <div><p class="p1 bold">Ім'я Прізвище</p></div>
+            <div><p class="p1 regular">{{app.lname}} {{app.fname}}</p></div>
             <div class="pseudo-line"></div>
-            <div><p class="p1 regular">Місцезнаходження</p></div>
+            <div><p class="p1 regular">{{app.location}}</p></div>
             <div class="pseudo-line"></div>
-                <div><p class="p1 regular">Резюме</p></div>
-            <div>
-                <a href="#" style="bnt-a" download>
+
+
+                    <div class="align-content">
+                        <a href="{{ MEDIA_URL }}{{ app.resume }}"  class="p1 bold download-link" style="margin: 0;" download>Резюме</a>
                 <span class="icon" style=" width: 1.25em; height: 1.25em;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" style=" width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
                         <path fill="#071013" d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
                 </span>
-                </a>
-            </div>
-        </div>
-        </div>
+                    </div>
     </div>
+    {% endfor %}
+    {% else %}
+    <div class="no-results">
+        <h4 class="h4 bold" style="color: #767676; margin: 0;">Тут нічого :(</h4>
+        <p class="p1 regular" style="color: #767676; margin: 0;">Потенційних кандидатів ще немає</p>
+    </div>
+    {% endif %}
 </section>
 
 

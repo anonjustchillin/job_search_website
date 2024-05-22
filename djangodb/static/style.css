@@ -489,7 +489,7 @@ select:error{
 
 /* vacancy card */
 
-.card {
+.my-card {
     display: flex;
     width: 388px;
     height: 273px;
@@ -498,7 +498,7 @@ select:error{
     padding: 20px;
 }
 
-.card div: last-of-type{
+.my-card div: last-of-type{
     margin-top: auto;
 }
 
