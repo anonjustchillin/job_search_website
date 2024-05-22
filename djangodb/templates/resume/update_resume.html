@@ -2,17 +2,7 @@
 {% load static %}
 {% block title %}Резюме{% endblock %}
 {% block head_nav %}
-        <div class="nav">
-            <div class="linksL">
-               <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
-                <a class="h6 medium" href="{% url 'job-listing' %}">Збережені вакансії</a>
-            </div>
-            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
-            <div class="linksR">
-                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
-            </div>
-
-        </div>
+        {% include 'base_header.html' %}
 {% endblock head_nav %}
 
 {% block content %}
@@ -53,22 +43,5 @@
 {% endblock content %}
 
 {% block foot_nav %}
-        <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
-                </ul>
-            </div>
-            <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 regular"><a href="{% url 'job-listing' %}">Збережені вакансії</a></li>
-                    <li class="p1 regular"><a href="{% url 'resume-details' %}">Резюме</a></li>
-                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
-                </ul>
-            </div>
-            <div class="footerCol" style="margin-left: auto; text-align: right;">
-                <ul class="items" style="align-items: center;">
-                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
-                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
-                </ul>
-        </div>
+        {% include 'base_footer.html' %}
 {% endblock foot_nav %}

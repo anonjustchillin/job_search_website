@@ -15,7 +15,7 @@ def create_job(request):
                 var.company = request.company
                 var.save()
 
-                messages.info(request, 'Вакансія створена.')
+                messages.info(request, 'Вакансія створена')
                 return redirect('dashboard')
             else:
                 messages.warning(request, 'Шось не то')
@@ -40,7 +40,7 @@ def update_job(request, pk):
             var.company = request.company
             var.save()
 
-            messages.info(request, 'Вакансія оновлена.')
+            messages.info(request, 'Вакансія оновлена')
             return redirect('dashboard')
         else:
             messages.warning(request, 'Шось не то')
@@ -56,6 +56,13 @@ def manage_jobs(request):
     return render(request, 'job/manage_jobs.html', context)
 
 
+def delete_job(request, pk):
+    job = Job.objects.get(pk=pk)
+    job.delete()
+    messages.info(request, 'Вакансія видалена')
+    return redirect('manage-jobs')
+
+
 def apply_to_job(request, pk):
     if request.user.is_authenticated and request.user.is_applicant:
         job = Job.objects.get(pk=pk)
@@ -68,17 +75,17 @@ def apply_to_job(request, pk):
                 user=request.user,
                 status='Pending'
             )
-            messages.info(request, 'Ви відправили заявку на вакансію.')
+            messages.info(request, 'Ви відправили заявку на вакансію')
             return redirect('dashboard')
     else:
-        messages.info(request, 'Ввійдіть у свій акаунт.')
+        messages.info(request, 'Ввійдіть у свій акаунт')
         return redirect('login')
 
 
 def all_applicants(request, pk):
-    job = Job.objects.get(pk=pk)
-    applicants = job.applyjob_set.all()
-    context = {'job': job, 'applicants': applicants}
+    jobs = Job.objects.get(pk=pk)
+    applicants = jobs.applyjob_set.all()
+    context = {'jobs': jobs, 'applicants': applicants}
     return render(request, 'all_applicants.html', context)
 
 

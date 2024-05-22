@@ -1,38 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}{{job.title}}{% endblock %}
 {% block head_nav %}
-{% if request.user.is_applicant %}
-        <div class="nav">
-            <div class="linksL">
-               <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
-                <a class="h6 medium" href="{% url 'job-listing' %}">Збережені вакансії</a>
-            </div>
-            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
-            <div class="linksR">
-                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
-            </div>
-
-        </div>
-
-{% elif request.user.is_recruiter %}
-        <div class="nav">
-            <div class="linksL">
-                <a class="h6 medium" href="{% url 'dashboard' %}">Пошук вакансій</a>
-                <a class="h6 medium" href="{% url 'job-listing' %}">Керування вакансіями</a>
-            </div>
-
-            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
-            <div class="linksR">
-               <a class="h6 medium" href="{% url 'job-listing' %}" style="float:right;">Огляд кандидатів</a>
-                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
-            </div>
-
-        </div>
-{% endif %}
+{% include 'base_header.html' %}
 {% endblock head_nav %}
 
 {% block content %}
+        {% include 'base_alert.html' %}
+
         <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px;">{{job.title}}</h3>
 
     <section id="details">
@@ -62,18 +38,34 @@
                 <div class="container">
                     <div class="mini-table">
                         <p class="p1 bold">Заробітня плата</p>
-                        <p class="p1 medium">{{job.salary}} UAH</p>
+                        <p class="p1 medium">{{job.salary|intcomma}} UAH</p>
                     </div>
                     <div class="mini-table">
                         <p class="p1 bold">Компанія</p>
-                        <p class="p1 medium">{{job.company}}</p>
+                        <p class="p1 medium">{{job.company.name}}</p>
                     </div>
 
                 </div>
 
+            {% if request.user.is_applicant %}
+            {% if has_applied %}
                 <div>
-                    <a href="#"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                    <a href="#"><button role="link" class="button" style="display:flex; width: 288px;" disabled>Відгукнутися</button></a>
                 </div>
+            {% else %}
+                <div>
+                    <a href="{% url 'apply-to-job' %}"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                </div>
+            {% endif %}
+
+            {% elif request.user.is_recruiter %}
+                <div></div>
+            {% else %}
+                <div>
+                    <a href="{% url 'login' %}"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                </div>
+
+            {% endif %}
 
         </div>
         <div class="right-content">
@@ -89,50 +81,5 @@
     {% endblock content %}
 
 {% block foot_nav %}
-{% if request.user.is_applicant %}
-        <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
-                </ul>
-            </div>
-            <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 regular"><a href="{% url 'job-listing' %}">Збережені вакансії</a></li>
-                    <li class="p1 regular"><a href="{% url 'job-listing' %}">Резюме</a></li>
-                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
-                </ul>
-            </div>
-            <div class="footerCol" style="margin-left: auto; text-align: right;">
-                <ul class="items" style="align-items: center;">
-                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
-                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
-                </ul>
-        </div>
-
-{% elif request.user.is_recruiter %}
-        <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
-                </ul>
-            </div>
-        <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 regular"><a href="{% url 'login' %}">Керування вакансіями</a></li>
-                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Додати вакансію</a></li>
-                    <li class="p1 regular"><a href="{% url 'register-recruiter' %}">Огляд кандидатів</a></li>
-                </ul>
-            </div>
-            <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Компанія</a></li>
-                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
-                </ul>
-            </div>
-            <div class="footerCol" style="margin-left: auto; text-align: right;">
-                <ul class="items" style="align-items: center;">
-                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
-                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
-                </ul>
-        </div>
-{% endif %}
+{% include 'base_footer.html' %}
 {% endblock foot_nav %}

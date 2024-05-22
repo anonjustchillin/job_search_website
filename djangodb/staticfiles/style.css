@@ -4,7 +4,7 @@ body{
 
 /* nav bars in header */
 .header{
-    height: 116px;
+    height: 100px;
     background-color: #073466;
     padding-left: 40px;
     padding-right: 40px;
@@ -12,14 +12,16 @@ body{
 }
 
 .nav{
+    height: 100px;
     overflow: hidden;
     display: flex;
+     align-items: center;
     /*margin-left: 40px;
     margin-right: 40px;*/
 }
 
 .nav .linksL {
-  flex: 1;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -81,6 +83,12 @@ body{
     margin-top: 160px;
 }
 
+.footer-gap{
+    display: flex;
+    flex-direction: column;
+    gap: 92px;
+}
+
 .footer .footerRow{
     overflow: hidden;
     display: flex;
@@ -123,6 +131,62 @@ body{
     text-decoration: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 2px;
+}
+
+/* alerts */
+
+.alert{
+    overflow: hidden;
+    display: flex;
+    padding: 2px 20px 2px 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 40px 0px 40px;
+    border-radius: 8px;
+    border: 3px solid #E8695E;
+    background: #EEC3C3;
+    z-index: 3;
+}
+
+.a-alert{
+    color: #071013;
+}
+.a-alert:visited {
+    color: #071013;
+    text-decoration: none;
+}
+
+.a-alert:hover {
+    color: #071013;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+
+.a-alert:active {
+    color: #071013;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+
+.temporary{
+    position: fixed;
+    width: auto;
+    bottom: 0;
+    right: 0;
+    animation: hide 1s linear 5s 1 forwards;
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}
+
+.sticky{
+    position: sticky;
+    top: 0;
 }
 
 /* typography */
@@ -211,9 +275,26 @@ a:active {
     text-decoration-thickness: 2px;
 }
 
+a bnt-a{
+    text-decoration: none;
+}
+
+a bnt-a:visited {
+    text-decoration: none;
+}
+
+a bnt-a:hover {
+    text-decoration: none;
+}
+
+a bnt-a:active {
+    text-decoration: none;
+}
+
 /* line */
 
 .line {
+    margin: 0;
     border-width: 2px;
     color: #919191;
 }
@@ -222,7 +303,6 @@ a:active {
 
 button{
     text-decoration: none;
-
 }
 
 .button {
@@ -291,25 +371,30 @@ button{
 }
 
 /* form elements */
+.checkbox{
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+}
+
 input, textarea, select{
-    display: flex;
     width: 300px;
     height: 40px;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     border-radius: 8px;
     border: 3px solid #071013;
     background-color: #EEEEEE;
+    z-index: 1;
 
     margin-top: 4px;
     padding: 8px 8px;
     align-self: stretch;
 
     color: #071013;
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    line-height: normal;
     font-size: 18px;
     font-weight: 400;
 }
@@ -360,13 +445,15 @@ select:error{
     position:relative;
     overflow-x:hidden;
     height: 400px;
-    background-color: #D8D8D8;
+    background-color: #C4C5E0;
 }
 
 #introText{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
     width: 460px;
     margin-left: 40px;
-    padding-top: 36px;
 }
 
 #introImg{
@@ -537,4 +624,57 @@ select:error{
     margin: 0;
     border-width: 0;
     border-radius: 0;
+}
+
+/* table */
+
+.table-container{
+    display: flex;
+    justify-content: center;
+}
+
+.table-row{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.table-item{
+    height: 56px;
+    width: 800px;
+    overflow: hidden;
+    display: flex;
+    padding: 12px 18px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #C4C5E0;
+}
+
+.pseudo-line{
+    border-left: 2px solid #37597F;
+    height: 32px;
+}
+
+.table-text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+}
+
+.table-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*gap: 16px;*/
+}
+
+.btn-icon{
+    height: 32px;
+    width: 32px;
+    background: #276FBF;
+    border-radius: 50%;
+    border: 0;
 }

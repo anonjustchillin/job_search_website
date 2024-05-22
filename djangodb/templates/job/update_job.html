@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Редагувати{% endblock %}
+{% block head_nav %}
+        {% include 'base_header.html' %}
+{% endblock head_nav %}
+
+{% block content %}
+<div class="page-title">
+    <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Редагування вакансії</h3>
+    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+</div>
+
+<section class="form-section">
+<form class="containerF" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="title" class="p1 bold">Назва посади</label>
+        <input type="text" id="title" name="title" placeholder="Введіть назву посади" class="form-item" required>
+    </div>
+    <div>
+        <label for="industry" class="p1 bold">Індустрія</label>
+        <select id="industry" name="industry" class="form-item" required>
+        </select>
+    </div>
+    <div>
+        <label for="salary" class="p1 bold">Заробітня плата</label>
+        <input type="text" id="salary" name="salary" placeholder="Введіть заробітню плату" class="form-item" required>
+    </div>
+    <div>
+        <label for="type" class="p1 bold">Тип роботи</label>
+        <select id="type" name="type" class="form-item" required>
+        </select>
+    </div>
+    <div>
+        <label for="region" class="p1 bold">Область</label>
+        <select id="region" name="region" class="form-item" required>
+        </select>
+    </div>
+    <div>
+        <label for="location" class="p1 bold">Населений пункт</label>
+        <input type="text" id="location" name="location" placeholder="Введіть населений пункт" class="form-item" required>
+    </div>
+    <div>
+        <label for="reqs" class="p1 bold">Вимоги</label>
+        <input type="text" id="reqs" name="reqs" placeholder="Введіть вимоги" class="form-item" style="height: 100px;" required>
+    </div>
+
+    <div class="align-content" style="align-items: center; gap: 16px; margin: 0;">
+            <input type="checkbox" id="is_available" name="is_available" class="checkbox">
+            <label for="is_available" class="p1 regular">Публічне</label>
+    </div>
+
+    <div>
+        <button type="submit" class="button" style="width: 217px; margin-top: 14px">Зберегти</button>
+    </div>
+</form>
+</section>
+
+
+{% endblock content %}
+
+{% block foot_nav %}
+        {% include 'base_footer.html' %}
+{% endblock foot_nav %}

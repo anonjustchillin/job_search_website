@@ -19,19 +19,23 @@
     {% endblock %}
     {% if messages %}
       {% for messages in messages %}
-        <div>
-            <h6 class="h6 medium"> {{ messages }} </h6>
+        <div class="alert temporary" style="width: auto; margin-right: 0px;">
+            <p class="p1 medium"> {{ messages }} </p>
         </div>
       {% endfor %}
       {% endif %}
 
     <div class="footer">
+        <div class="footer-gap">
         <div class="footerRow">
             {% block foot_nav %}
             {% endblock %}
         </div>
-        <hr class="line" style="color: #C4C5E0; width: 1420px; margin-top: 72px">
-        <p class="p1 regular" style="color: #C4C5E0; margin-top: 24px">Курсова робота з програмування студентки групи ІС-32 Топки Тіни</p>
+            <div>
+        <hr class="line" style="color: #C4C5E0; width: 1420px;">
+        <p class="p1 regular" style="color: #C4C5E0;">Курсова робота з програмування студентки групи ІС-32 Топки Тіни</p>
+            </div>
+        </div>
     </div>
 
 </body>

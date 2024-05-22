@@ -22,9 +22,9 @@ class Job(models.Model):
     objects = models.Manager()
 
     type_choices = (
-        ('Remote', 'Remote'),
-        ('On-site', 'On-site'),
-        ('Hybrid', 'Hybrid')
+        ('Дистанційно', 'Дистанційно'),
+        ('На місці', 'На місці'),
+        ('Гібрид', 'Гібрид')
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -50,14 +50,6 @@ class Job(models.Model):
 class ApplyJob(models.Model):
     objects = models.Manager()
 
-    status_choices = (
-        ('Accepted', 'Accepted'),
-        ('Declined', 'Declined'),
-        ('Pending', 'Pending')
-    )
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=status_choices)
-

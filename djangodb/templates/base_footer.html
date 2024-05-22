@@ -1,0 +1,56 @@
+{% load static %}
+
+{% if request.user.is_applicant %}
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    {% if request.user.has_resume %}
+                    <li class="p1 regular"><a href="{% url 'update-resume' %}">Резюме</a></li>
+                    {% else %}
+                    <li class="p1 regular"><a href="{% url 'update-resume' %}">Резюме</a></li>
+                    {% endif %}
+                    <li class="p1 regular"><a href="{% url 'applied-jobs' %}">Збережені вакансії</a></li>
+                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+
+{% elif request.user.is_recruiter %}
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'dashboard' %}">Головна</a></li>
+                </ul>
+            </div>
+        <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'manage-jobs' %}">Керування вакансіями</a></li>
+                    <li class="p1 regular"><a href="{% url 'create-job' %}">Додати вакансію</a></li>
+                    <li class="p1 regular"><a href="{% url 'all-applicants' %}">Огляд кандидатів</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    {% if request.user.has_company %}
+                    <li class="p1 regular"><a href="{% url 'company-details' company.pk %}">Компанія</a></li>
+                    {% else %}
+                    <li class="p1 regular"><a href="{% url 'update-company' %}">Компанія</a></li>
+                    {% endif %}
+                    <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+{% endif %}

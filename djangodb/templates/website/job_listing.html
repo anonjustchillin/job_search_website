@@ -1,32 +1,35 @@
 <section id="searchSection">
-        <div id="searchInputs">
+        <form id="searchInputs" method="GET">
             <div>
                 <label for="title" class="p1 bold">Посада</label>
-                <input type="text" id="title" name="title" value="">
+                <input type="text" id="title" name="form.title" value="">
             </div>
             <div>
-                <label for="category" class="p1 bold">Індустрія</label>
-                <select name="location" id="category">
-                    <option value="none">-</option>
-                    <option value="kyiv">Київ</option>
+                <label for="industry" class="p1 bold">Індустрія</label>
+                <select name="filter.form.industry" id="industry">
+]                    {% for x in filter.form.industry %}
+                    <option value="{{x}}"></option>
+                    {% endfor %}
                 </select>
             </div>
             <div>
-                <label for="loc" class="p1 bold">Населений пункт</label>
-                <select name="location" id="loc">
-                    <option value="none">-</option>
-                    <option value="kyiv">Київ</option>
+                <label for="region" class="p1 bold">Область</label>
+                <select name="filter.form.region" id="region">
+                    {% for x in filter.form.region %}
+                    <option value="{{x}}"></option>
+                    {% endfor %}
                 </select>
             </div>
             <div>
                 <label for="type" class="p1 bold">Тип роботи</label>
-                <select name="type" id="type">
-                    <option value="none">-</option>
-                    <option value="dist">Дистанційно</option>
+                <select name="filter.form.type" id="type">
+                    {% for x in filter.form.type %}
+                    <option value="{{x}}"></option>
+                    {% endfor %}
                 </select>
             </div>
-            <button class="button" style="margin-top: 23px;">Знайти вакансії</button>
-        </div>
+            <button type="submit" class="button" style="margin-top: 23px;">Знайти вакансії</button>
+        </form>
 
         <div class="container">
             {% if jobs %}
@@ -62,7 +65,7 @@
                 </div>
 
                 <div>
-                    <a href="{% url 'job-details' job.pk %}"><button role="link" class="button-outline" style="display:flex;">Переглянути</button></a>
+                    <a href="{% url 'job-details' job.pk %}" style="bnt-a"><button role="link" class="button-outline" style="display:flex;">Переглянути</button></a>
                 </div>
 
             </div>

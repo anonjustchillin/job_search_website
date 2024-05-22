@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Кандидати{% endblock %}
+{% block head_nav %}
+        {% include 'base_header.html' %}
+{% endblock head_nav %}
+
+{% block content %}
+<div class="page-title">
+    <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Усі кандидати</h3>
+    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+</div>
+
+<section class="table-container">
+    <div class="table-row">
+        <div class="table-item">
+            <div class="table-text">
+            <div><p class="p1 bold">Назва</p></div>
+            <div class="pseudo-line"></div>
+            <div><p class="p1 bold">Ім'я Прізвище</p></div>
+            <div class="pseudo-line"></div>
+            <div><p class="p1 regular">Місцезнаходження</p></div>
+            <div class="pseudo-line"></div>
+                <div><p class="p1 regular">Резюме</p></div>
+            <div>
+                <a href="#" style="bnt-a" download>
+                <span class="icon" style=" width: 1.25em; height: 1.25em;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" style=" width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
+                        <path fill="#071013" d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                </span>
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block foot_nav %}
+        {% include 'base_footer.html' %}
+{% endblock foot_nav %}
