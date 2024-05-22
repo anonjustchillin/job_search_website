@@ -8,7 +8,6 @@ class Resume(models.Model):
     fname = models.CharField(max_length=100, null=True, blank=True)
     lname = models.CharField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=100, null=True, blank=True)
-    # job_title = models.CharField(max_length=100, null=True, blank=True)
 
     upload_file = models.FileField(upload_to='resume', null=True, blank=True)
 
