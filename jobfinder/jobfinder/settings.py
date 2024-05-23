@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
     'django_filters',
     'widget_tweaks',
+    'django_cleanup.apps.CleanupConfig',
+
     # 'crispy_forms',
     # 'crispy_bootstrap5',
 ]

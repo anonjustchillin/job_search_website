@@ -14,7 +14,7 @@ def update_company(request):
             if form.is_valid():
                 var = form.save(commit=False)
                 user = User.objects.get(pk=request.user.id)
-                user.has_resume = True
+                user.has_company = True
                 user.save()
                 var.save()
 

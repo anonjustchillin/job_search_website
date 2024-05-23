@@ -21,11 +21,19 @@
 
     {% if messages %}
       {% for messages in messages %}
-        <div class="alert temporary" style="width: auto; margin-right: 0px;">
+        <div class="alert warning temporary" style="width: auto; margin-right: 0px;">
             <p class="p1 medium"> {{ messages }} </p>
         </div>
       {% endfor %}
       {% endif %}
+
+    <!--{% if messages.info %}
+      {% for messages in messages %}
+        <div class="alert info temporary" style="width: auto; margin-right: 0px;">
+            <p class="p1 medium"> {{ messages }} </p>
+        </div>
+      {% endfor %}
+      {% endif %}-->
 
     <div class="footer">
         <div class="footer-gap">

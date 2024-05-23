@@ -203,9 +203,12 @@ body{
     align-items: center;
     margin: 8px 40px 0px 40px;
     border-radius: 8px;
+    z-index: 3;
+}
+
+.warning{
     border: 3px solid #E8695E;
     background: #EEC3C3;
-    z-index: 3;
 }
 
 .a-alert{
@@ -228,6 +231,11 @@ body{
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 1.5px;
+}
+
+.info{
+    border: 3px solid #34964A;
+    background: #AEC9AC;
 }
 
 .temporary{
@@ -753,10 +761,15 @@ select:error{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+}
+
+.table-items{
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .table-row{
+    margin: 8px 0px 8px;
     display: flex;
     height: 56px;
     width: 720px;

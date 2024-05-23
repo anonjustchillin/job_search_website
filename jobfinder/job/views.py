@@ -42,7 +42,7 @@ def update_job(request, pk):
                 var.save()
 
                 messages.info(request, 'Вакансія оновлена')
-                return redirect('job/manage_jobs.html')
+                return redirect('manage-jobs')
             else:
                 messages.warning(request, 'Сталася помилка')
         else:

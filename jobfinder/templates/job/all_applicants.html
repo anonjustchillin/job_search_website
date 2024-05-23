@@ -9,11 +9,12 @@
 {% block content %}
 <div class="page-title">
     <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Кандидати<br>{{job.title}}</h3>
-    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+    <hr class="line" style="margin: 0; margin-bottom: 36px;">
 </div>
 
 <section class="table-container">
     {% if applicants %}
+        <div class="table-items">
     {% for app in applicants %}
     <div class="table-row">
             <div><p class="p1 bold">{{app.timestamp|naturaltime}}</p></div>
@@ -38,6 +39,7 @@
 
     </div>
     {% endfor %}
+        </div>
     {% else %}
     <div class="no-results">
         <h4 class="h4 bold" style="color: #767676; margin: 0;">Тут нічого :(</h4>

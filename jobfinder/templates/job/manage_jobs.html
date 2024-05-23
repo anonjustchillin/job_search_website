@@ -6,13 +6,15 @@
 {% endblock head_nav %}
 
 {% block content %}
+{% include 'base_alert.html' %}
 <div class="page-title">
     <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Керування вакансіями</h3>
-    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+    <hr class="line" style="margin: 0; margin-bottom: 36px;">
 </div>
 
 <section class="table-container">
     {% if jobs %}
+    <div class="table-items">
         {% for job in jobs %}
     <div class="table-row">
                 <div class="align-content" style="width: 125px; margin: 0; align-items: center; gap: 12px;">
@@ -62,6 +64,7 @@
                 <div><a class="p1 bold" href="{% url 'all-applicants' job.pk %}" style="color: #071013">Кандидати</a></div>
     </div>
     {% endfor %}
+    </div>
     {% else %}
     <div class="no-results">
         <h4 class="h4 bold" style="color: #767676; margin: 0;">Тут нічого :(</h4>
