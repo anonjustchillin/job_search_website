@@ -31,36 +31,45 @@ def create_job(request):
 
 # update a vacancy
 def update_job(request, pk):
-    job = Job.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = UpdateJobForm(request.POST, instance=job)
-        if form.is_valid():
-            var = form.save(commit=False)
-            var.user = request.user
-            var.company = request.user.company
-            var.save()
+    if request.user.is_authenticated and request.user.is_recruiter:
+        job = Job.objects.get(pk=pk)
+        if request.method == 'POST':
+            form = UpdateJobForm(request.POST, instance=job)
+            if form.is_valid():
+                var = form.save(commit=False)
+                var.user = request.user
+                var.company = request.user.company
+                var.save()
 
-            messages.info(request, 'Вакансія оновлена')
-            return redirect('job/manage_jobs.html')
+                messages.info(request, 'Вакансія оновлена')
+                return redirect('job/manage_jobs.html')
+            else:
+                messages.warning(request, 'Сталася помилка')
         else:
-            messages.warning(request, 'Сталася помилка')
+            form = UpdateJobForm(instance=job)
+            context = {'form': form}
+            return render(request, 'job/update_job.html', context)
     else:
-        form = UpdateJobForm(instance=job)
-        context = {'form': form}
-        return render(request, 'job/update_job.html', context)
+        return redirect('home')
 
 
 def manage_jobs(request):
-    jobs = Job.objects.filter(user=request.user, company=request.user.company)
-    context = {'jobs': jobs}
-    return render(request, 'job/manage_jobs.html', context)
+    if request.user.is_authenticated and request.user.is_recruiter:
+        jobs = Job.objects.filter(user=request.user, company=request.user.company)
+        context = {'jobs': jobs}
+        return render(request, 'job/manage_jobs.html', context)
+    else:
+        return redirect('home')
 
 
 def delete_job(request, pk):
-    job = Job.objects.get(pk=pk)
-    job.delete()
-    messages.info(request, 'Вакансія видалена')
-    return redirect('manage-jobs')
+    if request.user.is_authenticated and request.user.is_recruiter:
+        job = Job.objects.get(pk=pk)
+        job.delete()
+        messages.info(request, 'Вакансія видалена')
+        return redirect('manage-jobs')
+    else:
+        return redirect('home')
 
 
 def apply_to_job(request, pk):
@@ -82,13 +91,19 @@ def apply_to_job(request, pk):
 
 
 def all_applicants(request, pk):
-    job = Job.objects.get(pk=pk)
-    applicants = job.applyjob_set.all()
-    context = {'job': job, 'applicants': applicants}
-    return render(request, 'job/all_applicants.html', context)
+    if request.user.is_authenticated and request.user.is_recruiter:
+        job = Job.objects.get(pk=pk)
+        applicants = job.applyjob_set.all()
+        context = {'job': job, 'applicants': applicants}
+        return render(request, 'job/all_applicants.html', context)
+    else:
+        return redirect('home')
 
 
 def applied_jobs(request):
-    jobs = ApplyJob.objects.filter(user=request.user)
-    context = {'jobs': jobs}
-    return render(request, 'job/applied_job.html', context)
+    if request.user.is_authenticated and request.user.is_applicant:
+        jobs = ApplyJob.objects.filter(user=request.user)
+        context = {'jobs': jobs}
+        return render(request, 'job/applied_job.html', context)
+    else:
+        return redirect('home')

@@ -7,7 +7,7 @@ from users.models import User
 
 # update company
 def update_company(request):
-    if request.user.is_recruiter:
+    if request.user.is_authenticated and request.user.is_recruiter:
         company = Company.objects.get(user=request.user)
         if request.method == 'POST':
             form = UpdateCompanyForm(request.POST, instance=company)
@@ -34,6 +34,9 @@ def update_company(request):
 
 # view company details
 def company_details(request, pk):
-    company = Company.objects.get(pk=pk)
-    context = {'company': company}
-    return render(request, 'company/company_details.html', context)
+    if request.user.is_authenticated and request.user.is_recruiter:
+        company = Company.objects.get(pk=pk)
+        context = {'company': company}
+        return render(request, 'company/company_details.html', context)
+    else:
+        return redirect('home')

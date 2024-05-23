@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Resume
 from users.models import User
 from .form import UpdateResumeForm
+from django.http import FileResponse
 
 
 # оновити резюме
@@ -34,6 +35,13 @@ def update_resume(request):
 
 # перегляд резюме
 def resume_details(request, pk):
-    resume = Resume.objects.get(pk=pk)
-    context = {'resume': resume}
-    return render(request, 'resume/resume_details.html', context)
+    if request.user.is_authenticated and request.user.is_applicant:
+        resume = Resume.objects.get(pk=pk)
+        context = {'resume': resume}
+        return render(request, 'resume/resume_details.html', context)
+    else:
+        return redirect('home')
+
+
+# def download(request, pk):
+#     return FileResponse(open(path_to_file, 'rb'), as_attachment=True)
