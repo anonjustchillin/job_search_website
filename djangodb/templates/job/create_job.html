@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block title %}Нова вакансія{% endblock %}
 {% block head_nav %}
         {% include 'base_header.html' %}
@@ -15,44 +16,51 @@
 <form class="containerF" method="POST">
     {% csrf_token %}
     <div>
-        <label for="title" class="p1 bold">Назва посади</label>
-        <input type="text" id="title" name="title" placeholder="Введіть назву посади" class="form-item" required>
+        <label class="p1 bold">Назва посади</label>
+        {% render_field form.title class="form-control" %}
+        <!--<input type="text" id="title" name="title" placeholder="Введіть назву посади" class="form-item" required>-->
     </div>
     <div>
-        <label for="industry" class="p1 bold">Індустрія</label>
-                <select name="form.industry" id="industry" class="form-item" required>
+        <label class="p1 bold">Індустрія</label>
+        {% render_field form.industry class="form-control" %}
+                <!--<select name="form.industry" id="industry" class="form-item" required>
                     {% for x in form.industry %}
                     <option value="{{x}}"></option>
                     {% endfor %}
-                </select>
+                </select>-->
     </div>
     <div>
-        <label for="salary" class="p1 bold">Заробітня плата</label>
-        <input type="text" id="salary" name="salary" placeholder="Введіть заробітню плату" class="form-item" required>
+        <label class="p1 bold">Заробітня плата</label>
+        {% render_field form.salary class="form-control" %}
+         <!--<input type="text" id="salary" name="salary" placeholder="Введіть заробітню плату" class="form-item" required>-->
     </div>
     <div>
-        <label for="type" class="p1 bold">Тип роботи</label>
-                <select name="form.type" id="type" class="form-item" required>
+        <label class="p1 bold">Тип роботи</label>
+        {% render_field form.type class="form-control" %}
+                <!--<select name="form.type" id="type" class="form-item" required>
                     {% for x in form.type %}
                     <option value="{{x}}"></option>
                     {% endfor %}
-                </select>
+                </select>-->
     </div>
     <div>
-        <label for="region" class="p1 bold">Область</label>
-                <select name="form.region" id="region" class="form-item" required>
+        <label class="p1 bold">Область</label>
+        {% render_field form.region class="form-control" %}
+                 <!--<select name="form.region" id="region" class="form-item" required>
                     {% for x in form.region %}
                     <option value="{{x}}"></option>
                     {% endfor %}
-                </select>
+                </select>-->
     </div>
     <div>
-        <label for="location" class="p1 bold">Населений пункт</label>
-        <input type="text" id="location" name="location" placeholder="Введіть населений пункт" class="form-item" required>
+        <label class="p1 bold">Населений пункт</label>
+        {% render_field form.location class="form-control" %}
+         <!--<input type="text" id="location" name="location" placeholder="Введіть населений пункт" class="form-item" required>-->
     </div>
     <div>
-        <label for="reqs" class="p1 bold">Вимоги</label>
-        <input type="text" id="reqs" name="reqs" placeholder="Введіть вимоги" class="form-item" style="height: 100px;" required>
+        <label class="p1 bold">Вимоги</label>
+        {% render_field form.reqs class="form-control" %}
+         <!--<input type="text" id="reqs" name="reqs" placeholder="Введіть вимоги" class="form-item" style="height: 100px;" required>-->
     </div>
 
     <div class="align-content" style="align-items: center; gap: 16px; margin: 0;">

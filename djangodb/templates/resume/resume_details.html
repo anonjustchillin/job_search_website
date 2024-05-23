@@ -11,35 +11,39 @@
     <hr class="line" style="margin: 0; margin-bottom: 44px;">
 </div>
 
-<section class="form-section">
-<form class="containerF" method="POST">
-    {% csrf_token %}
-    <div>
+<section class="section-container">
+    <div class="details-container">
+    <div class="details-table">
+    <div class="details-content detailsL">
+    <p class="p1 bold" style="margin: 0;">Прізвище Ім'я</p>
+    <p class="p1 bold" style="margin: 0;">Місцезнаходження</p>
+    <p class="p1 bold" style="margin: 0;">Файл резюме</p>
+    </div>
 
-        <label for="fname" class="p1 bold">Ім'я</label>
-        <input type="text" id="fname" name="fname" placeholder="Введіть ім'я" class="form-item" required>
+    <div class="details-content detailsLine">
+    <div class="pseudo-line"></div>
+    <div class="pseudo-line"></div>
+    <div class="pseudo-line"></div>
     </div>
+
+    <div class="details-content detailsR">
+    <p class="p1 regular" style="margin: 0;">{{resume.lname}} {{resume.fname}}</p>
+    <p class="p1 regular" style="margin: 0;">{{resume.location}}</p>
+        <div class="align-content">
+            <a href="{{ resume.upload_file }}" class="p1 regular download-link" style="margin: 0;" download>Завантажити</a>
+                <span class="icon" style=" width: 1.25em; height: 1.25em;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" style=" width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
+                        <path fill="#071013" d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                </span>
+        </div>
+    </div>
+    </div>
+
     <div>
-        <label for="lname" class="p1 bold">Прізвище</label>
-        <input type="text" id="lname" name="lname" placeholder="Введіть прізвище" class="form-item" required>
+        <a href="{% url 'update-resume' %}"><button class="button" style="width: 217px; margin-top: 14px">Редагувати</button></a>
     </div>
-    <div>
-        <label for="location" class="p1 bold">Населений пункт</label>
-        <input type="text" id="location" name="location" placeholder="Введіть населений пункт" class="form-item" required>
     </div>
-    <div class="align-content" style="align-items: center; gap: 16px; margin: 0;">
-            <span class="icon" style="width: 1.25em; height: 1.25em;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" style="width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false" viewBox="0 0 448 512">
-                    <path fill="#071013" d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3 192 320c0 17.7 14.3 32 32 32s32-14.3 32-32l0-210.7 73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-64z"/></svg>
-            </span>
-            <input class="upload p1 medium" type="file" id="upload_file" name="upload_file" value="Завантажити файл" />
-    </div>
-    <div>
-        <button type="submit" class="button" style="width: 217px; margin-top: 14px">Зберегти</button>
-    </div>
-</form>
 </section>
-
 
 {% endblock content %}
 

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Компанія{% endblock %}
+{% block head_nav %}
+        {% include 'base_header.html' %}
+{% endblock head_nav %}
+
+{% block content %}
+<div class="page-title">
+    <h3 class="h3 bold" style="padding: 0px 40px; margin-bottom: 18px; ">Компанія</h3>
+    <hr class="line" style="margin: 0; margin-bottom: 44px;">
+</div>
+
+<section class="section-container">
+    <div class="details-container">
+    <div class="details-table">
+    <div class="details-content detailsL">
+    <p class="p1 bold" style="margin: 0;">Назва</p>
+    <p class="p1 bold" style="margin: 0;">Країна</p>
+    <p class="p1 bold" style="margin: 0;">Населений пункт</p>
+    </div>
+
+    <div class="details-content detailsLine">
+    <div class="pseudo-line"></div>
+    <div class="pseudo-line"></div>
+    <div class="pseudo-line"></div>
+    </div>
+
+    <div class="details-content detailsR">
+    <p class="p1 regular" style="margin: 0;">{{company.name}}</p>
+    <p class="p1 regular" style="margin: 0;">{{company.country}}</p>
+    <p class="p1 regular" style="margin: 0;">{{company.city}}</p>
+    </div>
+    </div>
+
+    <div>
+        <a href="{% url 'update-company' %}"><button class="button" style="width: 217px; margin-top: 14px">Редагувати</button></a>
+    </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block foot_nav %}
+        {% include 'base_footer.html' %}
+{% endblock foot_nav %}

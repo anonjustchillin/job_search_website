@@ -1,45 +1,36 @@
 {% load static %}
+{% load humanize %}
+{% load widget_tweaks%}
 
 <section id="searchSection">
         <form id="searchInputs" method="GET">
             <div>
-                <label for="title" class="p1 bold">Посада</label>
-                <input type="text" id="title" name="form.title" value="">
+                <label class="p1 bold">Посада</label>
+                {% render_field filter.form.title class="form-control" %}
             </div>
             <div>
-                <label for="industry" class="p1 bold">Індустрія</label>
-                <select name="filter.form.industry" id="industry">
-]                    {% for x in filter.form.industry %}
-                    <option value="{{x}}"></option>
-                    {% endfor %}
-                </select>
+                <label class="p1 bold">Індустрія</label>
+                {% render_field filter.form.industry class="form-control" %}
             </div>
             <div>
-                <label for="region" class="p1 bold">Область</label>
-                <select name="filter.form.region" id="region">
-                    {% for x in filter.form.region %}
-                    <option value="{{x}}"></option>
-                    {% endfor %}
-                </select>
+                <label class="p1 bold">Область</label>
+                {% render_field filter.form.region class="form-control" %}
             </div>
             <div>
-                <label for="type" class="p1 bold">Тип роботи</label>
-                <select name="filter.form.type" id="type">
-                    {% for x in filter.form.type %}
-                    <option value="{{x}}"></option>
-                    {% endfor %}
-                </select>
+                <label class="p1 bold">Тип роботи</label>
+                {% render_field filter.form.type class="form-control" %}
             </div>
             <button type="submit" class="button" style="margin-top: 23px;">Знайти вакансії</button>
         </form>
-            {% if jobs %}
-            {% for job in jobs %}
-        <div class="container" style="gap: 24px;">
 
+        <div class="container" style="gap: 24px;">
+            {% if filter %}
+            {% if filter.qs %}
+            {% for job in filter.qs %}
             <div class="my-card">
                     <div class="card-title">
-                        <h4 class="h4 bold" style="margin: 0;">{{job.title}}</h4>
-                        <h4 class="h4 regular" style="margin: 0;">{{job.salary}} UAH</h4>
+                        <h4 class="h4 bold" style="margin: 0;">{{job.title|truncatechars:30}}</h4>
+                        <h4 class="h4 regular" style="margin: 0;">{{job.salary|intcomma}} UAH</h4>
                     </div>
                         <hr class="line" style="margin: 20px 0px 12px; color: #37597F">
 
@@ -72,15 +63,16 @@
                 </div>
 
             </div>
-
-        </div>
         {% endfor %}
         {% else %}
+        </div>
+
     <div class="no-results">
         <h4 class="h4 bold" style="color: #767676; margin: 0;">Тут нічого :(</h4>
         <p class="p1 regular" style="color: #767676; margin: 0;">Введіть інший запит</p>
     </div>
 
         {% endif %}
+    {% endif %}
 
     </section>

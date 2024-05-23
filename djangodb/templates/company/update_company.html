@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block title %}Компанія{% endblock %}
 {% block head_nav %}
         {% include 'base_header.html' %}
@@ -15,16 +16,19 @@
 <form class="containerF" method="POST">
     {% csrf_token %}
     <div>
-        <label for="name" class="p1 bold">Назва компанії</label>
-        <input type="text" id="name" name="name" placeholder="Введіть назву компанії" class="form-item" required>
+        <label class="p1 bold">Назва компанії</label>
+        {% render_field form.name class="form-control" %}
+        <!--<input type="text" id="name" name="name" placeholder="Введіть назву компанії" class="form-item" required>-->
     </div>
     <div>
-        <label for="country" class="p1 bold">Країна</label>
-        <input type="text" id="country" name="country" placeholder="Введіть країну" class="form-item" required>
+        <label class="p1 bold">Країна</label>
+        {% render_field form.country class="form-control" %}
+        <!--<input type="text" id="country" name="country" placeholder="Введіть країну" class="form-item" required>-->
     </div>
     <div>
-        <label for="city" class="p1 bold">Населений пункт</label>
-        <input type="text" id="city" name="city" placeholder="Введіть населений пункт" class="form-item" required>
+        <label class="p1 bold">Населений пункт</label>
+        {% render_field form.city class="form-control" %}
+        <!--<input type="text" id="city" name="city" placeholder="Введіть населений пункт" class="form-item" required>-->
     </div>
     <div>
         <button type="submit" class="button" style="width: 217px; margin-top: 14px">Зберегти</button>

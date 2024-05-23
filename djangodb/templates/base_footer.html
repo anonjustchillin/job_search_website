@@ -9,7 +9,7 @@
             <div class="footerCol">
                 <ul class="items">
                     {% if request.user.has_resume %}
-                    <li class="p1 regular"><a href="{% url 'resume-details' %}">Резюме</a></li>
+                    <li class="p1 regular"><a href="{% url 'resume-details' request.user.resume.pk %}">Резюме</a></li>
                     {% else %}
                     <li class="p1 regular"><a href="{% url 'update-resume' %}">Резюме</a></li>
                     {% endif %}
@@ -39,11 +39,30 @@
             <div class="footerCol">
                 <ul class="items">
                     {% if request.user.has_company %}
-                    <li class="p1 regular"><a href="{% url 'company-details' user.pk %}">Компанія</a></li>
+                    <li class="p1 regular"><a href="{% url 'company-details' request.user.company.pk %}">Компанія</a></li>
                     {% else %}
                     <li class="p1 regular"><a href="{% url 'update-company' %}">Компанія</a></li>
                     {% endif %}
                     <li class="p1 regular"><a href="{% url 'logout' %}">Вийти з акаунта</a></li>
+                </ul>
+            </div>
+            <div class="footerCol" style="margin-left: auto; text-align: right;">
+                <ul class="items" style="align-items: center;">
+                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
+                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
+                </ul>
+        </div>
+{% else %}
+    <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
+                </ul>
+            </div>
+            <div class="footerCol">
+                <ul class="items">
+                    <li class="p1 regular"><a href="{% url 'login' %}">Вхід в акаунт</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Реєстрація для шукачів</a></li>
+                    <li class="p1 regular"><a href="{% url 'register-recruiter' %}">Реєстрація для роботодавців</a></li>
                 </ul>
             </div>
             <div class="footerCol" style="margin-left: auto; text-align: right;">

@@ -12,7 +12,7 @@ def create_job(request):
             if form.is_valid():
                 var = form.save(commit=False)
                 var.user = request.user
-                var.company = request.company
+                var.company = request.user.company
                 var.save()
 
                 messages.info(request, 'Вакансія створена')
@@ -37,11 +37,11 @@ def update_job(request, pk):
         if form.is_valid():
             var = form.save(commit=False)
             var.user = request.user
-            var.company = request.company
+            var.company = request.user.company
             var.save()
 
             messages.info(request, 'Вакансія оновлена')
-            return redirect('dashboard')
+            return redirect('job/manage_jobs.html')
         else:
             messages.warning(request, 'Шось не то')
     else:
@@ -72,8 +72,7 @@ def apply_to_job(request, pk):
         else:
             ApplyJob.objects.create(
                 job=job,
-                user=request.user,
-                status='Pending'
+                user=request.user
             )
             messages.info(request, 'Ви відправили заявку на вакансію')
             return redirect('dashboard')
@@ -86,7 +85,7 @@ def all_applicants(request, pk):
     job = Job.objects.get(pk=pk)
     applicants = job.applyjob_set.all()
     context = {'job': job, 'applicants': applicants}
-    return render(request, 'all_applicants.html', context)
+    return render(request, 'job/all_applicants.html', context)
 
 
 def applied_jobs(request):

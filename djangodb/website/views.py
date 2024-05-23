@@ -16,11 +16,16 @@ def job_listing(request):
 
 
 def job_details(request, pk):
-    if ApplyJob.objects.filter(user=request.user, job=pk).exists():
-        has_applied = True
-    else:
-        has_applied = False
+    if request.user.is_authenticated:
+        if ApplyJob.objects.filter(user=request.user, job=pk).exists():
+            has_applied = True
+        else:
+            has_applied = False
 
-    job = Job.objects.get(pk=pk)
-    context = {'job': job, 'has_applied': has_applied}
-    return render(request, 'website/job_details.html', context)
+        job = Job.objects.get(pk=pk)
+        context = {'job': job, 'has_applied': has_applied}
+        return render(request, 'website/job_details.html', context)
+    else:
+        job = Job.objects.get(pk=pk)
+        context = {'job': job}
+        return render(request, 'website/job_details.html', context)

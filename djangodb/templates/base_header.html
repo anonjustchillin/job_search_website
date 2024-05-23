@@ -8,7 +8,18 @@
             </div>
             <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
             <div class="linksR">
-                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Акаунт</button>
+                    <div class="dropdown-content">
+                        {% if request.user.has_resume %}
+                        <a class="p1 regular a1" href="{% url 'resume-details' request.user.resume.pk %}">Резюме</a>
+                        {% else %}
+                        <a class="p1 regular a1" href="{% url 'update-resume' %}">Резюме</a>
+                        {% endif %}
+                        <hr class="line" style="color: #EEEEEE;">
+                        <a class="p1 regular a2" href="{% url 'logout' %}">Вийти з акаунта</a>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -22,8 +33,29 @@
 
             <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
             <div class="linksR">
-                <a class="h6 medium" href="#" style="float:right;">Профіль</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Акаунт</button>
+                    <div class="dropdown-content">
+                        {% if request.user.has_company %}
+                        <a class="p1 regular a1" href="{% url 'company-details' request.user.company.pk %}">Компанія</a>
+                        {% else %}
+                        <a class="p1 regular a1" href="{% url 'update-company' %}">Компанія</a>
+                        {% endif %}
+                        <hr class="line" style="color: #EEEEEE;">
+                        <a class="p1 regular a2" href="{% url 'logout' %}">Вийти з акаунта</a>
+                    </div>
+                </div>
             </div>
 
+        </div>
+{% else %}
+    <div class="nav">
+            <div class="linksL">
+               <a class="h6 medium" href="{% url 'home' %}">Пошук вакансій</a>
+            </div>
+            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
+            <div class="linksR">
+                <a class="h6 medium" href="{% url 'login' %}" style="float:right;">Увійти в акаунт</a>
+            </div>
         </div>
 {% endif %}

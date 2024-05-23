@@ -3,23 +3,16 @@
 
 {% block title %}Головна{% endblock %}
 {% block head_nav %}
-        <div class="nav">
-            <div class="linksL">
-               <a class="h6 medium" href="{% url 'home' %}">Пошук вакансій</a>
-            </div>
-            <h3 class="header-title h3 bold" style = "color: #EEEEEE;">JobFinder</h3>
-            <div class="linksR">
-                <a class="h6 medium" href="{% url 'login' %}" style="float:right;">Увійти в акаунт</a>
-            </div>
-        </div>
+        {% include 'base_header.html' %}
 {% endblock %}
 
 {% block content %}
     <div id="introHome">
         <div id="introText">
-            <h2 class="h2 bold" style="margin: 0px;">JobFinder</h2>
+            <h2 class="h2 bold" style="margin: 0px;">Шукаєте роботу?</h2>
             <hr class="line" style="width: auto; color: #37597F; margin: 0;">
-            <h5 class="h5 medium" style="color: #37597F; margin: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            <h5 class="h5 medium" style="color: #37597F; margin: 0px;">Перегляньте вакансії за вашими критеріями та знайдіть свою ідеальну позицію.
+                <br>Зробіть перший крок до успіху вже зараз!</h5>
             <a class="bnt-a" href="{% url 'register-applicant' %}"><button class="button">Створити акаунт</button></a>
         </div>
         <div id="introImg">
@@ -30,22 +23,5 @@
 {% endblock %}
 
 {% block foot_nav %}
-    <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 bold"><a href="{% url 'home' %}">Головна</a></li>
-                </ul>
-            </div>
-            <div class="footerCol">
-                <ul class="items">
-                    <li class="p1 regular"><a href="{% url 'login' %}">Вхід в акаунт</a></li>
-                    <li class="p1 regular"><a href="{% url 'register-applicant' %}">Реєстрація для шукачів</a></li>
-                    <li class="p1 regular"><a href="{% url 'register-recruiter' %}">Реєстрація для роботодавців</a></li>
-                </ul>
-            </div>
-            <div class="footerCol" style="margin-left: auto; text-align: right;">
-                <ul class="items" style="align-items: center;">
-                    <li><h5 class="h5 bold" style="color: #EEEEEE; margin-bottom: 0;">JobFinder</h5></li>
-                    <li><p class="p1 regular" style="color: #C4C5E0;">Розпочни свою кар'єру</p></li>
-                </ul>
-        </div>
+    {% include 'base_footer.html' %}
 {% endblock %}

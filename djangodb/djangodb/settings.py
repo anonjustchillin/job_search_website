@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'job',
 
     'django_filters',
+    'widget_tweaks',
     # 'crispy_forms',
     # 'crispy_bootstrap5',
 ]

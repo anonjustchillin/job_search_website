@@ -50,11 +50,11 @@
             {% if request.user.is_applicant %}
             {% if has_applied %}
                 <div>
-                    <a href="#"><button role="link" class="button" style="display:flex; width: 288px;" disabled>Відгукнутися</button></a>
+                    <a style="text-decoration: none;"><button role="link" class="button" style="display:flex; width: 288px;" disabled>Відгукнутися</button></a>
                 </div>
             {% else %}
                 <div>
-                    <a href="{% url 'apply-to-job' %}"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                    <a href="{% url 'apply-to-job' job.pk %}" style="text-decoration: none;"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
                 </div>
             {% endif %}
 
@@ -62,7 +62,7 @@
                 <div></div>
             {% else %}
                 <div>
-                    <a href="{% url 'login' %}"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
+                    <a href="{% url 'login' %}" style="text-decoration: none;"><button role="link" class="button" style="display:flex; width: 288px;">Відгукнутися</button></a>
                 </div>
 
             {% endif %}
