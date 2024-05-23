@@ -2,7 +2,7 @@
 
 {% if request.user.is_applicant %}
         {% if not request.user.has_resume %}
-        <div class="alert sticky">
+        <div class="alert">
             <div><p class="p1 medium">Ви ще не створили резюме! Перейдіть за посиланням: <a class="a-alert bold" href="{% url 'update-resume' %}">ДОДАТИ РЕЗЮМЕ</a>.</p></div>
             <div class="icon" style=" width: 1.25em; height: 1.25em;">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" style=" width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false"  viewBox="0 0 512 512">
@@ -13,7 +13,7 @@
 
 {% elif request.user.is_recruiter %}
         {% if not request.user.has_company %}
-        <div class="alert sticky">
+        <div class="alert">
             <div><p class="p1 medium">Ви ще не додали компанію! Перейдіть за посиланням: <a class="a-alert bold" href="{% url 'update-company' %}">ДОДАТИ КОМПАНІЮ</a>.</p></div>
             <div class="icon" style=" width: 1.25em; height: 1.25em;">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" style=" width: 1.25em; height: 1.25em;" aria-hidden="true" focusable="false"  viewBox="0 0 512 512">

@@ -18,11 +18,11 @@ def update_resume(request):
                 user.save()
                 var.save()
 
-                messages.info(request, 'Резюме оновлене.')
+                messages.info(request, 'Резюме оновлене')
                 return redirect('dashboard')
 
             else:
-                messages.warning(request, 'Шось не те')
+                messages.warning(request, 'Сталася помилка')
         else:
             form = UpdateResumeForm(instance=resume)
             context = {'form': form}

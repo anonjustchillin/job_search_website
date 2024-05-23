@@ -18,10 +18,10 @@ def update_company(request):
                 var.save()
                 user.save()
 
-                messages.info(request, 'Інформація про компанію оновлена.')
+                messages.info(request, 'Компанія оновлена')
                 return redirect('dashboard')
             else:
-                messages.warning(request, 'Шось не то')
+                messages.warning(request, 'Сталася помилка')
 
         else:
             form = UpdateCompanyForm(instance=company)

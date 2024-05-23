@@ -18,7 +18,7 @@ def create_job(request):
                 messages.info(request, 'Вакансія створена')
                 return redirect('dashboard')
             else:
-                messages.warning(request, 'Шось не то')
+                messages.warning(request, 'Сталася помилка')
                 return redirect('create-job')
         else:
             form = CreateJobForm()
@@ -43,7 +43,7 @@ def update_job(request, pk):
             messages.info(request, 'Вакансія оновлена')
             return redirect('job/manage_jobs.html')
         else:
-            messages.warning(request, 'Шось не то')
+            messages.warning(request, 'Сталася помилка')
     else:
         form = UpdateJobForm(instance=job)
         context = {'form': form}
@@ -77,7 +77,7 @@ def apply_to_job(request, pk):
             messages.info(request, 'Ви відправили заявку на вакансію')
             return redirect('dashboard')
     else:
-        messages.info(request, 'Ввійдіть у свій акаунт')
+        messages.info(request, 'Увійдіть у свій акаунт')
         return redirect('login')
 
 

@@ -22,7 +22,7 @@ def register_applicant(request):
             messages.info(request, 'Акаунт створений')
             return redirect('login')
         else:
-            messages.warning(request, 'Шось не то')
+            messages.warning(request, 'Неправильно введені дані')
             return redirect('register-applicant')
     else:
         form = RegisterUserForm()
@@ -44,7 +44,7 @@ def register_recruiter(request):
             messages.info(request, 'Акаунт створений')
             return redirect('login')
         else:
-            messages.warning(request, 'Шось не то')
+            messages.warning(request, 'Неправильно введені дані')
             return redirect('register-recruiter')
     else:
         form = RegisterUserForm()
@@ -63,7 +63,7 @@ def login_user(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            messages.warning(request, 'Шось не то')
+            messages.warning(request, 'Неправильно введені дані')
             return redirect('login')
     else:
         return render(request, 'users/login.html')

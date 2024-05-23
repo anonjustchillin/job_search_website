@@ -5,19 +5,20 @@
 {% block title %}Реєстрація роботодавців{% endblock %}
 
 {% block content %}
-    <!--{% if messages %}
-      {% for messages in messages %}
-        <div>
-            <h6 class="h6 medium"> {{ messages }} </h6>
-        </div>
-      {% endfor %}
-      {% endif %}-->
     <form class="container" method="POST">
         {% csrf_token %}
-        <h3 class="h3 bold" style="margin-bottom: 12px;">Реєстрація для роботодавців</h3>
+        <div class="container-item">
+        <div class="title">
+        <h3 class="h3 bold">Реєстрація роботодавця</h3>
+        <hr class="line" style="width: 500px">
+            {% if messages %}
+            {% for messages in messages %}
+        <p class="alert regular">{{ messages }}</p>
+        {% endfor %}
+        {% endif %}
+        </div>
 
-        <hr class="line">
-
+        <div class="input-container">
         <div>
                 <label class="p1 bold">Email</label>
                 {% render_field form.email class="form-control" %}
@@ -26,32 +27,16 @@
                 <label class="p1 bold">Пароль</label>
                 {% render_field form.password1 class="form-control" %}
           </div>
-        <div style="margin-bottom: 24px;">
+        <div>
                 <label class="p1 bold">Введіть пароль ще раз</label>
                 {% render_field form.password2 class="form-control" %}
           </div>
+            </div>
 
+          <button type="submit" class="button" style="width: 172px;">Зареєструватися</button>
+        </div>
 
-          <!--<div>
-              <label for="email" class="p1 bold">Email</label>
-          <input type="text" id="email" name="email" placeholder="Введіть email" required>
-          </div>
-
-          <div>
-              <label for="password1" class="p1 bold">Пароль</label>
-          <input type="password" id="password1" name="password1" placeholder="Введіть пароль" required>
-          </div>
-
-          <div style="margin-bottom: 24px;">
-              <label for="password2" class="p1 bold">Введіть пароль ще раз</label>
-          <input type="password" id="password2" name="password2" placeholder="Введіть пароль ще раз" required>
-          </div>-->
-        <!--{{form.as_p}}-->
-
-
-          <button type="submit" class="button">Зареєструватися</button>
-
-        <div>
+        <div class="links">
           <p class="p1 medium"><a href="{% url 'register-applicant' %}">Реєстрація для шукачів.</a></p>
           <p class="p1 medium"><a href="{% url 'login' %}">Вже є акаунт? Увійти.</a></p>
         </div>

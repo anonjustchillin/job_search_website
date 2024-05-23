@@ -5,36 +5,38 @@
 {% block title %}Вхід{% endblock %}
 
 {% block content %}
-    <!--{% if messages %}
-      {% for messages in messages %}
-        <div>
-            <h6 class="h6 medium"> {{ messages }} </h6>
-        </div>
-      {% endfor %}
-      {% endif %}-->
     <form class="container" method="POST">
         {% csrf_token %}
+        <div class="container-item">
+        <div class="title">
         <h3 class="h3 bold">Вхід</h3>
-        <hr class="line">
-        <!--
-        <div class="alert">
-            <p class="p1 medium">це тестове</p>
-        </div>-->
+        <hr class="line" style="width: 500px">
+            {% if messages %}
+            {% for messages in messages %}
+        <p class="alert regular">{{ messages }}</p>
+        {% endfor %}
+        {% endif %}
+        </div>
 
-          <div>
+        <div class="input-container">
+        <div>
                 <label for="email" class="p1 bold">Email</label>
                 <input type="text" id="email" name="email" placeholder="Введіть email" required>
           </div>
 
-          <div style="margin-bottom: 24px;">
+          <div>
                 <label for="password" class="p1 bold">Пароль</label>
                 <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
           </div>
+            </div>
 
+          <button type="submit" class="button" style="width: 172px;">Увійти</button>
+        </div>
 
-          <button type="submit" class="button" style="width: 156px;">Увійти</button>
-
+        <div class="links">
           <p class="p1 medium"><a href="{% url 'register-applicant' %}">Створити акаунт.</a></p>
           <p class="p1 medium"><a href="{% url 'register-recruiter' %}">Реєстрація для роботодавців.</a></p>
+        </div>
+
       </form>
 {% endblock content %}

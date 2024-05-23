@@ -1,12 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from job.models import Job, ApplyJob
 from .filter import JobFilter
 
 
 def home(request):
-    filter = JobFilter(request.GET, queryset=Job.objects.filter(is_available=True).order_by('-timestamp'))
-    context = {'filter': filter}
-    return render(request, 'website/home.html', context)
+    if request.user.is_authenticated:
+        messages.info(request, 'З поверненням!')
+        return redirect('dashboard')
+    else:
+        filter = JobFilter(request.GET, queryset=Job.objects.filter(is_available=True).order_by('-timestamp'))
+        context = {'filter': filter}
+        return render(request, 'website/home.html', context)
 
 
 def job_listing(request):
