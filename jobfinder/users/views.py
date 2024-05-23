@@ -39,6 +39,7 @@ def register_recruiter(request):
             var.is_recruiter = True
             var.username = var.email
             var.save()
+
             Company.objects.create(user=var)
 
             messages.info(request, 'Акаунт створений')

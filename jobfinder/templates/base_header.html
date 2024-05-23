@@ -14,7 +14,7 @@
                         {% if request.user.has_resume %}
                         <a class="p1 regular a1" href="{% url 'resume-details' request.user.resume.pk %}">Резюме</a>
                         {% else %}
-                        <a class="p1 regular a1" href="{% url 'update-resume' %}">Резюме</a>
+                        <a class="p1 regular a1" href="{% url 'resume' %}">Резюме</a>
                         {% endif %}
                         <hr class="line" style="color: #EEEEEE;">
                         <a class="p1 regular a2" href="{% url 'logout' %}">Вийти з акаунта</a>
@@ -39,7 +39,7 @@
                         {% if request.user.has_company %}
                         <a class="p1 regular a1" href="{% url 'company-details' request.user.company.pk %}">Компанія</a>
                         {% else %}
-                        <a class="p1 regular a1" href="{% url 'update-company' %}">Компанія</a>
+                        <a class="p1 regular a1" href="{% url 'company' %}">Компанія</a>
                         {% endif %}
                         <hr class="line" style="color: #EEEEEE;">
                         <a class="p1 regular a2" href="{% url 'logout' %}">Вийти з акаунта</a>
