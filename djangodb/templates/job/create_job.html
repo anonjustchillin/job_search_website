@@ -17,12 +17,12 @@
     {% csrf_token %}
     <div>
         <label class="p1 bold">Назва посади</label>
-        {% render_field form.title class="form-control" %}
+        {% render_field form.title class="form-control form-item" %}
         <!--<input type="text" id="title" name="title" placeholder="Введіть назву посади" class="form-item" required>-->
     </div>
     <div>
         <label class="p1 bold">Індустрія</label>
-        {% render_field form.industry class="form-control" %}
+        {% render_field form.industry class="form-control form-item" %}
                 <!--<select name="form.industry" id="industry" class="form-item" required>
                     {% for x in form.industry %}
                     <option value="{{x}}"></option>
@@ -31,12 +31,12 @@
     </div>
     <div>
         <label class="p1 bold">Заробітня плата</label>
-        {% render_field form.salary class="form-control" %}
+        {% render_field form.salary class="form-control form-item" %}
          <!--<input type="text" id="salary" name="salary" placeholder="Введіть заробітню плату" class="form-item" required>-->
     </div>
     <div>
         <label class="p1 bold">Тип роботи</label>
-        {% render_field form.type class="form-control" %}
+        {% render_field form.type class="form-control form-item" %}
                 <!--<select name="form.type" id="type" class="form-item" required>
                     {% for x in form.type %}
                     <option value="{{x}}"></option>
@@ -45,8 +45,8 @@
     </div>
     <div>
         <label class="p1 bold">Область</label>
-        {% render_field form.region class="form-control" %}
-                 <!--<select name="form.region" id="region" class="form-item" required>
+        {% render_field form.region class="form-control form-item" %}
+                 <!--<select name="form.region" id="region" class="form-item form-item" required>
                     {% for x in form.region %}
                     <option value="{{x}}"></option>
                     {% endfor %}
@@ -54,18 +54,19 @@
     </div>
     <div>
         <label class="p1 bold">Населений пункт</label>
-        {% render_field form.location class="form-control" %}
+        {% render_field form.location class="form-control form-item" %}
          <!--<input type="text" id="location" name="location" placeholder="Введіть населений пункт" class="form-item" required>-->
     </div>
     <div>
         <label class="p1 bold">Вимоги</label>
-        {% render_field form.reqs class="form-control" %}
+        {% render_field form.reqs class="form-control form-item" %}
          <!--<input type="text" id="reqs" name="reqs" placeholder="Введіть вимоги" class="form-item" style="height: 100px;" required>-->
     </div>
 
     <div class="align-content" style="align-items: center; gap: 16px; margin: 0;">
-            <input type="checkbox" id="is_available" name="is_available" class="checkbox">
-            <label for="is_available" class="p1 regular">Публічне</label>
+        {% render_field form.is_available class="form-control checkbox" %}
+            <!--<input type="checkbox" id="is_available" name="is_available" class="checkbox">-->
+            <label class="p1 regular">Публічне</label>
     </div>
 
     <div>

@@ -1,5 +1,6 @@
 {% extends 'base_auth.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}Вхід{% endblock %}
 
@@ -13,7 +14,7 @@
       {% endif %}-->
     <form class="container" method="POST">
         {% csrf_token %}
-        <h3 class="h3 bold" style="margin-bottom: 12px;">Вхід</h3>
+        <h3 class="h3 bold">Вхід</h3>
         <hr class="line">
         <!--
         <div class="alert">
