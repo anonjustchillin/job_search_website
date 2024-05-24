@@ -82,17 +82,21 @@ def delete_job(request, pk):
 
 def apply_to_job(request, pk):
     if request.user.is_authenticated and request.user.is_applicant:
-        job = Job.objects.get(pk=pk)
-        if ApplyJob.objects.filter(user=request.user, job=pk).exists():
-            messages.warning(request, 'Доступу немає')
-            return redirect('dashboard')
+        if request.user.has_resume:
+            job = Job.objects.get(pk=pk)
+            if ApplyJob.objects.filter(user=request.user, job=pk).exists():
+                messages.warning(request, 'Доступу немає')
+                return redirect('dashboard')
+            else:
+                ApplyJob.objects.create(
+                    job=job,
+                    user=request.user
+                )
+                messages.info(request, 'Ви відправили заявку на вакансію')
+                return redirect('dashboard')
         else:
-            ApplyJob.objects.create(
-                job=job,
-                user=request.user
-            )
-            messages.info(request, 'Ви відправили заявку на вакансію')
-            return redirect('dashboard')
+            messages.info(request, 'Створіть резюме')
+            return redirect('resume')
     else:
         messages.info(request, 'Увійдіть у свій акаунт')
         return redirect('login')
