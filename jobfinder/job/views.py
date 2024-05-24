@@ -6,24 +6,28 @@ from .form import CreateJobForm, UpdateJobForm
 
 # create a vacancy
 def create_job(request):
-    if request.user.is_recruiter and request.user.has_company:
-        if request.method == 'POST':
-            form = CreateJobForm(request.POST)
-            if form.is_valid():
-                var = form.save(commit=False)
-                var.user = request.user
-                var.company = request.user.company
-                var.save()
+    if request.user.is_authenticated and request.user.is_recruiter:
+        if request.user.has_company:
+            if request.method == 'POST':
+                form = CreateJobForm(request.POST)
+                if form.is_valid():
+                    var = form.save(commit=False)
+                    var.user = request.user
+                    var.company = request.user.company
+                    var.save()
 
-                messages.info(request, 'Вакансія створена')
-                return redirect('dashboard')
+                    messages.info(request, 'Вакансія створена')
+                    return redirect('dashboard')
+                else:
+                    messages.warning(request, 'Сталася помилка')
+                    return redirect('create-job')
             else:
-                messages.warning(request, 'Сталася помилка')
-                return redirect('create-job')
+                form = CreateJobForm()
+                context = {'form': form}
+                return render(request, 'job/create_job.html', context)
         else:
-            form = CreateJobForm()
-            context = {'form': form}
-            return render(request, 'job/create_job.html', context)
+            messages.info(request, 'Створіть компанію')
+            return redirect('company')
     else:
         messages.warning(request, 'Доступу немає')
         return redirect('dashboard')
@@ -55,9 +59,13 @@ def update_job(request, pk):
 
 def manage_jobs(request):
     if request.user.is_authenticated and request.user.is_recruiter:
-        jobs = Job.objects.filter(user=request.user, company=request.user.company)
-        context = {'jobs': jobs}
-        return render(request, 'job/manage_jobs.html', context)
+        if request.user.has_company:
+            jobs = Job.objects.filter(user=request.user, company=request.user.company)
+            context = {'jobs': jobs}
+            return render(request, 'job/manage_jobs.html', context)
+        else:
+            messages.info(request, 'Створіть компанію')
+            return redirect('company')
     else:
         return redirect('home')
 
