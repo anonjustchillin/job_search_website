@@ -1,7 +1,3 @@
-this is a job search portal for my first year course work
-
-i have 2 weeks max...
-
 ***Тема**:* Веб-сайт пошуку роботи
 
 ***Сутності**:* вакансія, опис вакансії, вимоги до кандидата
