@@ -54,6 +54,7 @@ def update_job(request, pk):
             context = {'form': form}
             return render(request, 'job/update_job.html', context)
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')
 
 
@@ -67,6 +68,7 @@ def manage_jobs(request):
             messages.info(request, 'Створіть компанію')
             return redirect('company')
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')
 
 
@@ -77,6 +79,7 @@ def delete_job(request, pk):
         messages.info(request, 'Вакансія видалена')
         return redirect('manage-jobs')
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')
 
 
@@ -109,6 +112,7 @@ def all_applicants(request, pk):
         context = {'job': job, 'applicants': applicants}
         return render(request, 'job/all_applicants.html', context)
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')
 
 
@@ -118,4 +122,5 @@ def applied_jobs(request):
         context = {'jobs': jobs}
         return render(request, 'job/applied_job.html', context)
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')

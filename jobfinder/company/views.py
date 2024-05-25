@@ -40,4 +40,5 @@ def company_details(request, pk):
         context = {'company': company}
         return render(request, 'company/company_details.html', context)
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')

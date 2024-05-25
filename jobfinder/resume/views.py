@@ -39,6 +39,7 @@ def resume_details(request, pk):
         context = {'resume': resume}
         return render(request, 'resume/resume_details.html', context)
     else:
+        messages.warning(request, 'Доступу немає')
         return redirect('home')
 
 
